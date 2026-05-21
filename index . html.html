@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VaultEdge — Finance & Affiliate Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f6f6f4;
+      --text: #1a1a18;
+      --text-secondary: #6b6b66;
+      --border: rgba(0,0,0,0.1);
+      --border-md: rgba(0,0,0,0.18);
+      --green: #1D9E75;
+      --green-dark: #0F6E56;
+      --green-darker: #085041;
+      --green-light: #E1F5EE;
+      --green-mid: #9FE1CB;
+      --green-muted: #5DCAA5;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--green); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .nav-links li { cursor: pointer; transition: color 0.2s; }
+    .nav-links li:hover { color: var(--text); }
+
+    .btn-nav {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-nav:hover { background: var(--green-dark); transform: scale(1.02); }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 5rem 2.5rem 4rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: italic; color: var(--green); }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+
+    .hero-btns { display: flex; gap: 12px; align-items: center; }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 0.5px solid var(--border-md);
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--text-secondary); color: var(--text); }
+
+    /* DASHBOARD VISUAL */
+    .hero-visual {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      border: 0.5px solid var(--border);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card-header {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .stat {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+    .stat-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+    }
+    .stat-delta { font-size: 11px; font-weight: 500; color: var(--green); margin-top: 2px; }
+
+    .chart-wrap {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 60px;
+      margin-top: 0.75rem;
+    }
+    .bar {
+      flex: 1;
+      background: var(--green-mid);
+      border-radius: 3px 3px 0 0;
+      transition: background 0.2s;
+    }
+    .bar:last-child { background: var(--green); }
+    .bar:hover { background: var(--green); }
+
+    .bar-labels { display: flex; gap: 6px; margin-top: 6px; }
+    .bar-lbl { flex: 1; font-size: 10px; color: var(--text-secondary); text-align: center; }
+
+    /* SERVICES */
+    .services {
+      padding: 4rem 2.5rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 3rem;
+      max-width: 500px;
+    }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+    .service-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .service-card:hover { border-color: var(--green-muted); transform: translateY(-3px); }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--green-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--green-dark);
+      font-size: 20px;
+    }
+
+    .service-title { font-weight: 500; font-size: 16px; margin-bottom: 0.5rem; }
+    .service-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* PRICING */
+    .pricing {
+      padding: 4rem 2.5rem;
+      border-top: 0.5px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .grid-pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-items: start; }
+
+    .price-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: transform 0.2s;
+    }
+    .price-card:hover { transform: translateY(-3px); }
+    .price-card.featured { border: 2px solid var(--green); }
+
+    .price-badge {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green-darker);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+    }
+
+    .price-plan { font-weight: 500; font-size: 16px; margin-bottom: 0.5rem; }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .price-period { font-size: 13px; color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.75rem; }
+    .price-features li { font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+    .price-features li i { color: var(--green); font-size: 16px; }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 4rem 2.5rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .grid-testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+    .testi-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .testi-stars { color: var(--green); font-size: 14px; margin-bottom: 0.75rem; letter-spacing: 2px; }
+    .testi-quote { font-size: 15px; line-height: 1.65; color: var(--text); margin-bottom: 1.25rem; }
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+    .testi-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 500; color: var(--green-darker);
+    }
+    .testi-name { font-size: 14px; font-weight: 500; }
+    .testi-role { font-size: 12px; color: var(--text-secondary); }
+
+    /* CTA STRIP */
+    .cta-strip {
+      margin: 0 2.5rem 4rem;
+      background: var(--green-darker);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .cta-strip h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--green-light);
+      line-height: 1.2;
+      max-width: 360px;
+    }
+    .cta-strip h2 em { font-style: italic; color: var(--green-muted); }
+
+    .btn-light {
+      background: var(--green-light);
+      color: var(--green-darker);
+      border: none;
+      padding: 0.8rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .btn-light:hover { background: var(--green-mid); }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links span { cursor: pointer; transition: color 0.2s; }
+    .footer-links span:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-3, .grid-pricing, .grid-testimonials { grid-template-columns: 1fr; }
+      .cta-strip { flex-direction: column; text-align: center; }
+      nav .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo">Vault<span>Edge</span></a>
+    <ul class="nav-links">
+      <li>Services</li>
+      <li>Programs</li>
+      <li>Pricing</li>
+      <li>About</li>
+    </ul>
+    <button class="btn-nav">Get started</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Finance · Affiliate Marketing</p>
+      <h1>Turn your<br>reach into<br><em>real revenue</em></h1>
+      <p class="hero-desc">VaultEdge connects ambitious creators and marketers with high-converting finance affiliate programs — from credit cards to investment platforms.</p>
+      <div class="hero-btns">
+        <button class="btn-primary">Start earning</button>
+        <button class="btn-ghost">See programs →</button>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <p class="card-header">Your dashboard</p>
+      <div class="stat-row">
+        <div class="stat">
+          <p class="stat-label">Total earned</p>
+          <p class="stat-value">$8,420</p>
+          <p class="stat-delta">↑ 24% this month</p>
+        </div>
+        <div class="stat">
+          <p class="stat-label">Active programs</p>
+          <p class="stat-value">12</p>
+          <p class="stat-delta">↑ 3 new this week</p>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <p class="stat-label">Commissions — last 7 months</p>
+        <div class="bars">
+          <div class="bar" style="height:35%"></div>
+          <div class="bar" style="height:50%"></div>
+          <div class="bar" style="height:44%"></div>
+          <div class="bar" style="height:65%"></div>
+          <div class="bar" style="height:72%"></div>
+          <div class="bar" style="height:85%"></div>
+          <div class="bar" style="height:100%"></div>
+        </div>
+        <div class="bar-labels">
+          <span class="bar-lbl">Nov</span>
+          <span class="bar-lbl">Dec</span>
+          <span class="bar-lbl">Jan</span>
+          <span class="bar-lbl">Feb</span>
+          <span class="bar-lbl">Mar</span>
+          <span class="bar-lbl">Apr</span>
+          <span class="bar-lbl">May</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <p class="section-label">What we offer</p>
+    <h2 class="section-title">Everything you need to earn at scale</h2>
+    <div class="grid-3">
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-currency-dollar"></i></div>
+        <p class="service-title">Top affiliate programs</p>
+        <p class="service-desc">Access vetted finance programs from NerdWallet, Skillshare, credit card networks, and more — all in one place.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-chart-line"></i></div>
+        <p class="service-title">Real-time tracking</p>
+        <p class="service-desc">Monitor clicks, conversions, and commissions live. Know exactly what's performing and optimize fast.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-bolt"></i></div>
+        <p class="service-title">Fast payouts</p>
+        <p class="service-desc">Monthly payments with a low minimum threshold. No waiting months — your earnings move when you do.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-users"></i></div>
+        <p class="service-title">Dedicated support</p>
+        <p class="service-desc">Our affiliate managers are available to help you pick the right programs and grow your commissions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-link"></i></div>
+        <p class="service-title">Deep link tools</p>
+        <p class="service-desc">Generate smart links for any page, track performance per link, and maximize conversion from every click.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-shield-check"></i></div>
+        <p class="service-title">Vetted & trusted</p>
+        <p class="service-desc">Every program is reviewed for payout reliability. We only list brands that actually pay their affiliates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Simple, transparent plans</h2>
+    <div class="grid-pricing">
+      <div class="price-card">
+        <p class="price-plan">Starter</p>
+        <p class="price-amount">$0</p>
+        <p class="price-period">Free forever</p>
+        <ul class="price-features">
+          <li><i class="ti ti-check"></i> Up to 5 affiliate programs</li>
+          <li><i class="ti ti-check"></i> Basic dashboard</li>
+          <li><i class="ti ti-check"></i> Monthly payouts</li>
+          <li><i class="ti ti-check"></i> Email support</li>
+        </ul>
+        <button class="btn-ghost" style="width:100%;">Get started free</button>
+      </div>
+      <div class="price-card featured">
+        <span class="price-badge">Most popular</span>
+        <p class="price-plan">Growth</p>
+        <p class="price-amount">$29</p>
+        <p class="price-period">per month</p>
+        <ul class="price-features">
+          <li><i class="ti ti-check"></i> Unlimited programs</li>
+          <li><i class="ti ti-check"></i> Real-time analytics</li>
+          <li><i class="ti ti-check"></i> Deep link tools</li>
+          <li><i class="ti ti-check"></i> Priority support</li>
+          <li><i class="ti ti-check"></i> Custom tracking domain</li>
+        </ul>
+        <button class="btn-primary" style="width:100%;">Start free trial</button>
+      </div>
+      <div class="price-card">
+        <p class="price-plan">Pro</p>
+        <p class="price-amount">$79</p>
+        <p class="price-period">per month</p>
+        <ul class="price-features">
+          <li><i class="ti ti-check"></i> Everything in Growth</li>
+          <li><i class="ti ti-check"></i> Dedicated account manager</li>
+          <li><i class="ti ti-check"></i> Weekly payouts</li>
+          <li><i class="ti ti-check"></i> API access</li>
+          <li><i class="ti ti-check"></i> Team seats (5 users)</li>
+        </ul>
+        <button class="btn-ghost" style="width:100%;">Contact sales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <p class="section-label">Testimonials</p>
+    <h2 class="section-title">What our affiliates are saying</h2>
+    <div class="grid-testimonials">
+      <div class="testi-card">
+        <p class="testi-stars">★★★★★</p>
+        <p class="testi-quote">"VaultEdge helped me find three finance programs I'd never heard of. My commission income doubled in two months."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div>
+            <p class="testi-name">Ama Kyei</p>
+            <p class="testi-role">Finance blogger, Accra</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-stars">★★★★★</p>
+        <p class="testi-quote">"The real-time dashboard is a game changer. I can see exactly which posts are converting and focus my energy there."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JS</div>
+          <div>
+            <p class="testi-name">James Sarpong</p>
+            <p class="testi-role">YouTube creator</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-stars">★★★★★</p>
+        <p class="testi-quote">"Fast payouts, zero hassle. I've tried other platforms and nothing comes close to how smooth VaultEdge runs."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">NM</div>
+          <div>
+            <p class="testi-name">Nana Mensah</p>
+            <p class="testi-role">Email marketer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <h2>Ready to put your audience to <em>work</em>?</h2>
+    <button class="btn-light">Join VaultEdge free →</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="logo" style="font-size:16px;">Vault<span>Edge</span></a>
+    <span>© 2026 VaultEdge. All rights reserved.</span>
+    <div class="footer-links">
+      <span>Privacy</span>
+      <span>Terms</span>
+      <span>Contact</span>
+    </div>
+  </footer>
+
+</body>
+</html>
